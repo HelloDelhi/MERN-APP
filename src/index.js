@@ -4,10 +4,29 @@ import './index.css';
 import App from './App';
 import * as serviceWorker from './serviceWorker';
 
+//import createStore
+//create store is used to create the store
+//import applyMiddleware
+//applyMiddleware is used to apply the middleware thunk
+
+import {createStore , applyMiddleware} from 'redux';
+
+//import provider: used to provide store to appComponent
+import {Provider} from 'react-redux';
+
+//import reducer
+import reducer from './reducer/reducer';
+
+//import thunk Middleware
+import thunk from 'redux-thunk';
+
+//create the store object
+
+const store= createStore(reducer, applyMiddleware(thunk));
 ReactDOM.render(
-  <React.StrictMode>
+  <Provider store={store}>
     <App />
-  </React.StrictMode>,
+  </Provider>,
   document.getElementById('root')
 );
 
